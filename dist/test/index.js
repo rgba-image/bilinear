@@ -35,25 +35,15 @@ const getNoise = () => {
     return noise;
 };
 const noise = getNoise();
-const time = (name, fn) => {
-    const start = process.hrtime();
-    fn();
-    const end = process.hrtime(start);
-    console.log(`${name}: ${end[0] * 1e3 + end[1] / 1e6}ms`);
-};
 describe('bilinear', () => {
     it('resizes down', () => {
         const patternHalf = create_image_1.createImage(4, 4);
-        time('resizes down', () => {
-            __1.bilinear(pattern, patternHalf);
-        });
+        __1.bilinear(pattern, patternHalf);
         assert.deepEqual(patternHalf, expectPatternHalf);
     });
     it('resizes up', () => {
         const patternDouble = create_image_1.createImage(16, 16);
-        time('resizes up', () => {
-            __1.bilinear(pattern, patternDouble);
-        });
+        __1.bilinear(pattern, patternDouble);
         assert.deepEqual(patternDouble, expectPatternDouble);
     });
     it('resizes region down', () => {

@@ -22,9 +22,6 @@ export const bilinear: SourceToDest = ( source: ImageData, dest: ImageData, sx =
 
     const sourceY = y * yRatio + sy
     const yMin = sourceY | 0
-
-    if ( yMin < 0 || yMin >= source.height ) continue
-
     const yMax = Math.min( Math.ceil( sourceY ), source.height - 1 )
 
     for ( let x = 0; x < dw; x++ ) {
@@ -34,9 +31,6 @@ export const bilinear: SourceToDest = ( source: ImageData, dest: ImageData, sx =
 
       const sourceX = x * xRatio + sx
       const xMin = sourceX | 0
-
-      if ( xMin < 0 || xMin >= source.width ) continue
-
       const xMax = Math.min( Math.ceil( sourceX ), source.width - 1 )
       const destIndex = ( destY * dest.width + destX ) * 4
 

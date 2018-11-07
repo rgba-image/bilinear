@@ -19,8 +19,6 @@ exports.bilinear = (source, dest, sx = 0, sy = 0, sw = source.width - sx, sh = s
             continue;
         const sourceY = y * yRatio + sy;
         const yMin = sourceY | 0;
-        if (yMin < 0 || yMin >= source.height)
-            continue;
         const yMax = Math.min(Math.ceil(sourceY), source.height - 1);
         for (let x = 0; x < dw; x++) {
             const destX = dx + x;
@@ -28,8 +26,6 @@ exports.bilinear = (source, dest, sx = 0, sy = 0, sw = source.width - sx, sh = s
                 continue;
             const sourceX = x * xRatio + sx;
             const xMin = sourceX | 0;
-            if (xMin < 0 || xMin >= source.width)
-                continue;
             const xMax = Math.min(Math.ceil(sourceX), source.width - 1);
             const destIndex = (destY * dest.width + destX) * 4;
             assign(source, dest, destIndex, 0, sourceX, xMin, xMax, sourceY, yMin, yMax);
